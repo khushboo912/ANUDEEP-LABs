@@ -1,0 +1,67 @@
+mysql> create database studentMangementsystem;
+Query OK, 1 row affected (0.02 sec)
+mysql> use studentmangementsystem;
+Database changed
+mysql> create table student(Student_ID varchar (10) NOT NULL primary key,Name varchar(50) NOT null,age int NOT NULL,Address varchar(100) NOT NULL);
+Query OK, 0 rows affected (0.04 sec)
+mysql> desc student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| Student_ID | varchar(10)  | NO   | PRI | NULL    |       |
+| Name       | varchar(50)  | NO   |     | NULL    |       |
+| age        | int          | NO   |     | NULL    |       |
+| Address    | varchar(100) | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+mysql>  insert into student values('s101','Dipti',20,'Thane'),
+    -> ('s102','khushboo',21,'bhandup'),
+    -> ('s103','komal',22,'kalyan'),
+    -> ('s104','Rupal',24,'hydrabad'),
+    -> ('s105','kirti',23,'kalwa');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from student ;
++------------+----------+-----+----------+
+| Student_ID | Name     | age | Address  |
++------------+----------+-----+----------+
+| s101       | Dipti    |  20 | Thane    |
+| s102       | khushboo |  21 | bhandup  |
+| s103       | komal    |  22 | kalyan   |
+| s104       | Rupal    |  24 | hydrabad |
+| s105       | kirti    |  23 | kalwa    |
++------------+----------+-----+----------+
+5 rows in set (0.00 sec)
+mysql> CREATE TABLE feedback (
+    ->     feedback_ID VARCHAR(30) NOT NULL,
+    ->     Student_ID VARCHAR(10),
+    ->     Date DATE NOT NULL,
+    ->     InstructorName VARCHAR(50) NOT NULL,
+    ->     Feedback TEXT NOT NULL,
+    ->
+    ->     PRIMARY KEY (feedback_ID),
+    ->     FOREIGN KEY (Student_ID) REFERENCES student(Student_ID)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+mysql> INSERT INTO feedback VALUES
+    -> ('fd_101','s101','2026-02-12','rajshri mam','very nice'),
+    -> ('fd_102','s102','2026-02-12','rajshri mam','very nice'),
+    -> ('fd_103','s103','2026-02-12','rajshri mam','very nice'),
+    -> ('fd_104','s104','2026-02-12','rajshri mam','very nice'),
+    -> ('fd_105','s105','2026-02-12','rajshri mam','very nice');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from feedback
+    -> ;
++-------------+------------+------------+----------------+-----------+
+| feedback_ID | Student_ID | Date       | InstructorName | Feedback  |
++-------------+------------+------------+----------------+-----------+
+| fd_101      | s101       | 2026-02-12 | rajshri mam    | very nice |
+| fd_102      | s102       | 2026-02-12 | rajshri mam    | very nice |
+| fd_103      | s103       | 2026-02-12 | rajshri mam    | very nice |
+| fd_104      | s104       | 2026-02-12 | rajshri mam    | very nice |
+| fd_105      | s105       | 2026-02-12 | rajshri mam    | very nice |
++-------------+------------+------------+----------------+-----------+
+5 rows in set (0.00 sec)
