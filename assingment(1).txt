@@ -1,0 +1,42 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bankaccount        |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_info       |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.10 sec)
+mysql> create database `ecommerce_@`;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use `ecommerce_@`;
+Database changed
+mysql> create table customer(customer_ID varchar(30) not null primary key,name varchar(30) not null,city varchar(30) not null,email varchar(30) not null,phone_no int not null,address varchar(50) not null,pin_code int not null);
+Query OK, 0 rows affected (0.16 sec)
+mysql> insert into customer values('c101','akansha','Udaypur','Ak@gmail.com',88300,'mulund',880078),
+    -> ('c102','anushka','jaypur','Ak88@gmail.com',88320,'jaynagar',880067),
+    -> ('c103','karan kundar','jodhpur','kk23@gmail.com',82320,'sanjaynagar',880037),
+    -> ('c104','mohan','Uttarpradesh','mr@gmail.com',88300,'masoori',330078),
+    -> ('c105','radika','uttarpradesh','mk@gmail.com',88391,'mulund',88500);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+mysql> select*from customer;
++-------------+--------------+--------------+----------------+----------+-------------+----------+
+| customer_ID | name         | city         | email          | phone_no | address     | pin_code |
++-------------+--------------+--------------+----------------+----------+-------------+----------+
+| c101        | akansha      | Udaypur      | Ak@gmail.com   |    88300 | mulund      |   880078 |
+| c102        | anushka      | jaypur       | Ak88@gmail.com |    88320 | jaynagar    |   880067 |
+| c103        | karan kundar | jodhpur      | kk23@gmail.com |    82320 | sanjaynagar |   880037 |
+| c104        | mohan        | Uttarpradesh | mr@gmail.com   |    88300 | masoori     |   330078 |
+| c105        | radika       | uttarpradesh | mk@gmail.com   |    88391 | mulund      |    88500 |
++-------------+--------------+--------------+----------------+----------+-------------+----------+
+5 rows in set (0.00 sec)
+
